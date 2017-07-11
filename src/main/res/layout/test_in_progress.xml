@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools"
+    android:id="@+id/viewFlipper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:id="@+id/main_relative_layout">
+
+        <Button
+            android:text="Start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/test_button"
+            android:layout_marginBottom="@dimen/start_button_bottom_margin"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:onClick="startCountDown"/>
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_menu_help"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/floatingActionButton2" />
+
+        <TextView
+            android:text="Gait Test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/title_vertical_margin"
+            android:id="@+id/test_title"
+            android:textSize="@dimen/title_size" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/middle_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="match_parent">
+
+        <Chronometer
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/chronometer"
+            android:visibility="visible"
+            android:textSize="50sp"
+            android:layout_below="@+id/donut_progress"
+            android:layout_centerHorizontal="true" />
+
+        <com.github.lzyzsd.circleprogress.DonutProgress
+            android:layout_marginLeft="50dp"
+            android:id="@+id/donut_progress"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            custom:donut_progress="30"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="104dp" />
+
+
+    </RelativeLayout>
+
+
+</ViewFlipper>

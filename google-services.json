@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "292891568424",
+    "project_id": "pocket-neurologist"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292891568424:android:24d5910fea71b318",
+        "android_client_info": {
+          "package_name": "com.chase.pocketneurologist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292891568424-tuk1ngkvjj071jm7j0hf97jidad5klte.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chase.pocketneurologist",
+            "certificate_hash": "B6F8FF0C50DAE8B423A6C4C3EDA54BDC73184688"
+          }
+        },
+        {
+          "client_id": "292891568424-o23ttkdkphv9aplo5n3b24fcjq60vb99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk-oX5BdoqtMXBwJxjsbeaK-g4Uu4Ta_I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.chase.pocketneurologist">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera.front"/>
+    <uses-feature android:name="android.hardware.camera.front.autofocus"/>
+    <uses-feature android:name="android.hardware.location.gps" />
+
+    <!--brain icon taken from http://www.flaticon.com -->
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/tealbrain"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".HomeScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".TestList"
+            android:label="Tests">
+            <intent-filter>
+                <action android:name="com.chase.pocketneurologist.Test" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".History"
+            android:label="History">
+            <intent-filter>
+                <action android:name="com.chase.pocketneurologist.History" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RigidityTest">
+            <intent-filter>
+                <action android:name="com.chase.pocketneurologist.RigidityTest" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TremorTest">
+            <intent-filter>
+                <action android:name="com.chase.pocketneurologist.TremorTest" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".TremorTestResults"
+            android:label="Tremor Test Results"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.chase.pocketneurologist.TremorTestResults" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".RigidityTestResults"
+            android:label="Rigidity Test Results"
+            android:screenOrientation="portrait" >
+            <action android:name="com.chase.pocketneurologist.RigidityTestResults" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </activity>
+        <activity android:name=".BloodPressureTest" >
+            <action android:name="com.chase.pocketneurologist.BloodPressureTest" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </activity>
+
+        <activity android:name=".GaitTest_GaitLength"
+            android:screenOrientation="portrait" >
+            <action android:name="com.chase.pocketneurologist.GaitTest_GaitLength" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </activity>
+
+        <activity android:name=".GaitTest_Acceleration"
+            android:screenOrientation="portrait" >
+            <action android:name="com.chase.pocketneurologist.GaitTest_Acceleration" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </activity>
+
+        <activity android:name=".GaitTest_AccelerationResults"
+            android:label="Gait (Acceleration) Test Results"
+            android:screenOrientation="portrait" >
+            <action android:name="com.chase.pocketneurologist.GaitTest_AccelerationResults" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </activity>
+
+        <activity android:name=".GaitTest_GaitLengthResults"
+            android:label="Gait (Gait Length) Test Results"
+            android:screenOrientation="portrait" >
+            <action android:name="com.chase.pocketneurologist.GaitTest_GaitLengthResults" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </activity>
+
+        <activity android:name=".Settings" >
+            <intent-filter>
+                <action android:name="com.chase.pocketneurologist.Settings" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+    </application>
+
+</manifest>

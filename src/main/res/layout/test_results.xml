@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_height="300dip"
+        android:layout_width="300dip"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/avgRateOfChange"
+        android:layout_below="@+id/graph"
+        android:layout_centerHorizontal="true"
+        android:text="rateOfChange"
+        android:layout_marginTop="75dp" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        app:srcCompat="@mipmap/arrow"
+        android:id="@+id/arrow"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/avgRateOfChange"
+        android:layout_centerHorizontal="true" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:fabSize="mini"
+        app:srcCompat="@android:drawable/ic_menu_help"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/floatingActionButton2" />
+
+</RelativeLayout>

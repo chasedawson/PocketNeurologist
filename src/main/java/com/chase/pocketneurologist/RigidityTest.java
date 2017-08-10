@@ -35,7 +35,7 @@ public class RigidityTest extends Test {
                  * and then taking the sqaure root of that sum
                  */
                 double accel = (x * x + y * y + z * z);
-                RigidityTest.super.addToRawData(Double.parseDouble(getTimeStamp()), accel);
+                RigidityTest.super.addToRawData(Double.parseDouble(getTimeStamp()), x,y,z);
                 RigidityTest.super.addValue(Math.sqrt(accel));
             }
 

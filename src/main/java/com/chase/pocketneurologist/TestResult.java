@@ -42,6 +42,7 @@ public class TestResult {
     public void setMeasure(String string) {measure = string;}
 
 
+
     public String getDate() {
         return date;
     }

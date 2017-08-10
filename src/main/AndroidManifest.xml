@@ -66,6 +66,7 @@
         <activity android:name=".RigidityTestResults"
             android:label="Rigidity Test Results"
             android:screenOrientation="portrait" >
+
             <action android:name="com.chase.pocketneurologist.RigidityTestResults" />
             <category android:name="android.intent.category.DEFAULT" />
         </activity>
@@ -106,6 +107,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".AndroidDatabaseManager"
+            android:label="Pocket Neurologist" />
         
     </application>
 

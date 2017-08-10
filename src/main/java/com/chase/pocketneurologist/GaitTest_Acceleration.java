@@ -50,7 +50,7 @@ public class GaitTest_Acceleration extends Test {
                 //combines the accelerations from all three axises into one acceleration vector
                 double accel = (x * x + y * y + z * z);
 
-                GaitTest_Acceleration.super.addToRawData(Double.parseDouble(getTimeStamp()),accel);
+                GaitTest_Acceleration.super.addToRawData(Double.parseDouble(getTimeStamp()),x,y,z);
 
                 //adds this calculated acceleration vector to an arrayList in the
                 GaitTest_Acceleration.super.addValue(Math.sqrt(accel));

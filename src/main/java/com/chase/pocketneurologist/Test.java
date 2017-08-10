@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
+import java.util.UUID;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
@@ -57,6 +58,8 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
     private String measure;
     private String unit;
     private ArrayList<Double[]> rawData = new ArrayList<>();
+    private String testID;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,9 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
 
         TextView title = (TextView) findViewById(R.id.test_title);
         title.setText(getTestType() + " Test");
+
+        testID = UUID.randomUUID().toString();
+        GlobalValues.setTestID(testID);
 
         viewFlipper = (ViewFlipper) findViewById(R.id.viewFlipper);
         layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -136,12 +142,14 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
         result = getAverage();
         dialogBuilder = new AlertDialog.Builder(this);
         dialogBuilder.create();
-        if(!Mode.getTestMode()) {
+
+        if(!GlobalValues.getTestMode()) {
             DecimalFormat decimalFormat = new DecimalFormat("####.####");
             dialogBuilder.setTitle(getDialogMessage() + decimalFormat.format(result) + " " + unit);
         }
         else
             dialogBuilder.setTitle("This test is complete! Thanks!");
+
         dialogBuilder.setNegativeButton("close",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -157,14 +165,15 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
         String formattedRawData = "";
         DecimalFormat format = new DecimalFormat("####.####");
         for (int x = 0; x < rawData.size(); x++) {
-            String str = "\n" + format.format(rawData.get(x)[0]) + " " + format.format(rawData.get(x)[1]);
+            String str = "\n" + format.format(rawData.get(x)[0]) + " " + format.format(rawData.get(x)[1])
+            + " " + format.format(rawData.get(x)[2]) + " " + format.format(rawData.get(x)[3]);
             formattedRawData = formattedRawData + str;
         }
 
 
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"s.c.dawson54@example.com"});
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"pocketneurologist@gmail.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, "New Test Data for " + getTestType());
         i.putExtra(Intent.EXTRA_TEXT   , "Average Value: "  + getResult() + " m/s/s\nRaw Data: " + formattedRawData);
         try {
@@ -258,9 +267,13 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
         return average;
     }
 
-    public void addToRawData(Double timestamp, Double value) {
-        Double[] rawDatum = {timestamp, value};
+    public void addToRawData(Double timestamp, Double x, Double y, Double z) {
+        Double[] rawDatum = {timestamp, x, y, z};
         rawData.add(rawDatum);
+    }
+
+    public ArrayList<Double[]> getRawData() {
+        return rawData;
     }
 
 

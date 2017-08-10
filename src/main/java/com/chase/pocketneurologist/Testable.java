@@ -2,6 +2,7 @@ package com.chase.pocketneurologist;
 
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -20,6 +21,7 @@ public interface Testable {
     public String getTestType();
     public String getTimeStamp();
     public String getSymptomSeverity();
+    public ArrayList<Double[]> getRawData();
 
 
 

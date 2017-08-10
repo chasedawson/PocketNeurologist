@@ -1,5 +1,6 @@
 package com.chase.pocketneurologist;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import java.util.UUID;
 
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
@@ -39,7 +42,7 @@ public class HomeScreen extends AppCompatActivity
         View content_home_screen = app_bar_home_screen.findViewById(R.id.content_home_screen);
 
 
-        if(!Mode.getTestMode()) {
+        if(!GlobalValues.getTestMode()) {
             overallSeverityProgress = (DonutProgress) content_home_screen.findViewById(R.id.donut_progress);
 
 
@@ -47,6 +50,10 @@ public class HomeScreen extends AppCompatActivity
             overallSeverityProgress.setTextSize(90);
 
             DatabaseHandler db = new DatabaseHandler(this);
+           // db.deleteAll();
+            ArrayList<TestResult> testResults = db.getAllResults("Tremor");
+            Log.i("results", testResults.size() + "");
+
             ArrayList<SymptomSeverity> symptomSeverities = db.getSymptomSeverities();
             float averageSeverity = 0;
             Log.i("HOMESCREEN", symptomSeverities.size() + "");
@@ -67,10 +74,10 @@ public class HomeScreen extends AppCompatActivity
 
         }
 
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
 
 
@@ -99,7 +106,12 @@ public class HomeScreen extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume();
-        if(!Mode.getTestMode()) {
+
+        if(GlobalValues.getUserID() != null) {
+            Log.i("USER ID", GlobalValues.getUserID());
+        }
+
+        if(!GlobalValues.getTestMode()) {
             DatabaseHandler db = new DatabaseHandler(this);
             ArrayList<SymptomSeverity> symptomSeverities = db.getSymptomSeverities();
             float averageSeverity = 0;
@@ -177,4 +189,6 @@ public class HomeScreen extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

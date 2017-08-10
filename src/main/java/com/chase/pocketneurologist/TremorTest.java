@@ -30,7 +30,8 @@ public class TremorTest extends Test {
                 double y = event.values[1];
                 double z = event.values[2];
                 double accel = (x * x + y * y + z * z);
-                TremorTest.super.addToRawData(Double.parseDouble(getTimeStamp()), accel);
+
+                TremorTest.super.addToRawData(Double.parseDouble(getTimeStamp()), x, y, z);
                 TremorTest.super.addValue(Math.sqrt(accel));
             }
 

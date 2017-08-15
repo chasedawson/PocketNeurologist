@@ -28,9 +28,9 @@
         android:layout_height="wrap_content"
         android:text="View Databases"
         android:id="@+id/db_button"
+        android:layout_marginBottom="27dp"
         android:layout_above="@+id/testModeToggle"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="31dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,8 +38,18 @@
         android:text="Generate New User ID"
         android:onClick="generateNewUserId"
         android:id="@+id/userId_button"
-        android:layout_above="@+id/db_button"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp" />
+        android:layout_marginTop="36dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Export Raw Data Test Results"
+        android:onClick="exportResults"
+        android:id="@+id/export_button"
+        android:layout_marginBottom="21dp"
+        android:layout_above="@+id/db_button"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

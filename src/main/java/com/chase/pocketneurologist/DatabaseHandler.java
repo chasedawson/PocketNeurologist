@@ -6,10 +6,17 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.util.Log;
 import android.database.MatrixCursor;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by chase on 2/12/17.
@@ -276,6 +283,65 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             alc.set(1,Cursor2);
             return alc;
         }
+    }
+
+    public void exportDatabase() {
+        SQLiteDatabase sqlDB = this.getReadableDatabase();
+        Cursor cursor;
+        try {
+        cursor = sqlDB.rawQuery("select * from " + TABLE_RAW_DATA_TEST_RESULTS + " ORDER BY " + KEY_USER_ID + " ASC", null);
+        int rowCount = 0;
+        int colCount = 0;
+
+        File saveDir = new File(Environment.getExternalStorageDirectory().getPath() + "/Android");
+        String filename = "TEST_RESULTS_SORTED.csv";
+
+        File saveFile = new File(saveDir, filename);
+            Log.i("PATH TO RESULTS", saveFile.getPath());
+
+            FileWriter fw = new FileWriter(saveFile);
+            BufferedWriter bw = new BufferedWriter(fw);
+            rowCount = cursor.getCount();
+            colCount = cursor.getColumnCount();
+
+            if (rowCount > 0) {
+                cursor.moveToFirst();
+
+                for (int i = 0; i < colCount; i++) {
+                    if (i != colCount - 1)
+                        bw.write(cursor.getColumnName(i) + ",");
+                    else
+                        bw.write(cursor.getColumnName(i));
+                }
+                bw.newLine();
+
+                for (int i = 0; i < rowCount; i++) {
+                    cursor.moveToPosition(i);
+
+                    for (int j = 0; j < colCount; j++) {
+                        if (j != colCount - 1)
+                            bw.write(cursor.getString(j) + ",");
+                        else
+                            bw.write(cursor.getString(j));
+                    }
+                    bw.newLine();
+                }
+                bw.flush();
+
+            }
+
+        } catch (IOException e) {
+            if (sqlDB.isOpen())
+                sqlDB.close();
+            e.printStackTrace();
+
+
+        }
+        Log.i("SUCCESS", "DATABASE EXPORTED");
+
+
+
+
     }
 
 }

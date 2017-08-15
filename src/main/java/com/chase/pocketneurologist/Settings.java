@@ -58,4 +58,9 @@ public class Settings extends AppCompatActivity {
         GlobalValues.setUserId(userId);
         Log.i("USER ID", userId);
     }
+
+    public void exportResults(View v) {
+        DatabaseHandler db = new DatabaseHandler(this);
+        db.exportDatabase();
+    }
 }

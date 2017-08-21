@@ -44,6 +44,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //SymptomSeverity table
     private static final String TABLE_SYMPTOM_SEVERITY = "symptomSeverities";
 
+    //Personal Info
+    private static final String TABLE_PERSONAL_INFO = "personalInfo";
 
     //testResults column names
     private static final String KEY_ID = "id";
@@ -70,10 +72,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //also has a date column but the key is the same as the one for the testResults table
 
     //personalInfo column names
-    private static final String KEY_NAME = "name";
-    private static final String KEY_EMAIL = "email";
-    private static final String KEY_BIRTH_DATE = "birthDate";
-
+    private static final String KEY_AGE_RANGE = "ageRange";
+    private static final String KEY_SEX = "sex";
+    private static final String KEY_BRADYKINESIA = "bradykinesia";
+    private static final String KEY_POSTURAL_INSTABILITY = "posturalInstability";
+    private static final String KEY_RIGIDITY = "rigidity";
+    private static final String KEY_TREMOR = "tremor";
+    private static final String KEY_LEVODOPA = "levodopa";
 
     //constructor for DatabaseHandler
     public DatabaseHandler(Context context) {
@@ -101,10 +106,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String CREATE_SYMPTOM_SEVERITY_TABLE = "CREATE TABLE " + TABLE_SYMPTOM_SEVERITY + " ("
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_SYMPTOM +" TEXT," + KEY_DATE + " TEXT," + KEY_SEVERITY + " TEXT)";
 
+
+        String CREATE_PERSONAL_INFO_TABLE = "CREATE TABLE " + TABLE_PERSONAL_INFO + " ("
+                + KEY_AGE_RANGE + " TEXT," + KEY_SEX + " TEXT," + KEY_BRADYKINESIA + " TEXT," + KEY_POSTURAL_INSTABILITY
+                + " TEXT," + KEY_RIGIDITY + " TEXT," + KEY_TREMOR + " TEXT," + KEY_LEVODOPA + " TEXT)";
+
         //executes the sql code defined in the strings above
         db.execSQL(CREATE_TEST_RESULTS_TABLE);
         db.execSQL(CREATE_SYMPTOM_SEVERITY_TABLE);
         db.execSQL(CREATE_RAW_DATA_TEST_RESULTS_TABLE);
+        db.execSQL(CREATE_PERSONAL_INFO_TABLE);
     }
 
     @Override
@@ -132,7 +143,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //inserts the values of the testResult into testResults
         db.insert(TABLE_TEST_RESULTS, null, values);
-        Log.i("info", "yay we got here");
         db.close();
 
     }
@@ -285,16 +295,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
     }
 
-    public void exportDatabase() {
+    public void exportDatabase(String tableName, String filePath) {
         SQLiteDatabase sqlDB = this.getReadableDatabase();
         Cursor cursor;
         try {
-        cursor = sqlDB.rawQuery("select * from " + TABLE_RAW_DATA_TEST_RESULTS + " ORDER BY " + KEY_USER_ID + " ASC", null);
+        cursor = sqlDB.rawQuery("select * from " + tableName + " ORDER BY " + KEY_USER_ID + " ASC", null);
         int rowCount = 0;
         int colCount = 0;
 
         File saveDir = new File(Environment.getExternalStorageDirectory().getPath() + "/Android");
-        String filename = "TEST_RESULTS_SORTED.csv";
+        String filename = filePath;
 
         File saveFile = new File(saveDir, filename);
             Log.i("PATH TO RESULTS", saveFile.getPath());

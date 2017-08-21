@@ -61,6 +61,7 @@ public class Settings extends AppCompatActivity {
 
     public void exportResults(View v) {
         DatabaseHandler db = new DatabaseHandler(this);
-        db.exportDatabase();
+        db.exportDatabase("rawDataTestResults", "raw_data_test_results.csv");
+        db.exportDatabase("testResults", "test_results.csv");
     }
 }

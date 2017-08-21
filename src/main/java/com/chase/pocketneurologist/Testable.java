@@ -22,6 +22,7 @@ public interface Testable {
     public String getTimeStamp();
     public String getSymptomSeverity();
     public ArrayList<Double[]> getRawData();
+    public String getStartTime();
 
 
 

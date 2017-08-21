@@ -59,6 +59,7 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
     private String unit;
     private ArrayList<Double[]> rawData = new ArrayList<>();
     private String testID;
+    private Long startTime;
 
 
     @Override
@@ -128,6 +129,8 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
         }
         viewFlipper.showNext();
         chronometer.setBase(SystemClock.elapsedRealtime());
+        Calendar calendar = Calendar.getInstance();
+        startTime = calendar.getTimeInMillis();
         chronometer.start();
         checkTimeTask.execute();
     }
@@ -198,7 +201,7 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
 
     @Override
     public void saveResult() {
-        String[] resultConstructor = {getTestType(), measure, getTimeStamp(), result + ""};
+        String[] resultConstructor = {getTestType(), measure, getStartTime(), result + ""};
         TestResult testResult = new TestResult(resultConstructor);
         saveResultTask.execute(testResult);
     }
@@ -224,8 +227,12 @@ public class Test extends AppCompatActivity implements Testable, Timeable{
     @Override
     public String getTimeStamp() {
         Calendar calendar = Calendar.getInstance();
-        return calendar.getTimeInMillis() + "";    }
+        return calendar.getTimeInMillis() - startTime + "";    }
 
+    @Override
+    public String getStartTime() {
+        return startTime + "";
+    }
     @Override
     public void addProgress(float addedProgress) {
         donutProgress.setProgress(donutProgress.getProgress() + addedProgress);

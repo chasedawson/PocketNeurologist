@@ -111,6 +111,13 @@
 
         <activity android:name=".AndroidDatabaseManager"
             android:label="Pocket Neurologist" />
+
+        <activity android:name=".Survey" >
+            <intent-filter>
+                <action android:name="com.chase.pocketneurologist.Survey" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         
     </application>
 

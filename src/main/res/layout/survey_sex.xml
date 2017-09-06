@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:text="What is your approximate age?"
+        android:text="What is your sex?"
         android:textAlignment="center"
         android:textSize="50sp"
         android:id="@+id/textView" />
@@ -31,6 +31,4 @@
         android:layout_centerHorizontal="true"
         android:onClick="nextQuestion"
         android:layout_marginBottom="15dp" />
-
-
 </RelativeLayout>

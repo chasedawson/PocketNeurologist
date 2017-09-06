@@ -250,7 +250,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return testResults;
     }
 
-    ///////////////
     public ArrayList<Cursor> getData(String Query){
         //get writable database
         SQLiteDatabase sqlDB = this.getWritableDatabase();

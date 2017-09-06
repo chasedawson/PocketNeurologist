@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +31,7 @@ import java.util.Calendar;
  * Created by chase on 3/8/17.
  */
 
-public class Test extends AppCompatActivity implements Testable, Timeable{
+public class Test extends AppCompatActivity implements Testable, Timeable {
 
 
     private String test_type = "";

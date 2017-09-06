@@ -1,6 +1,7 @@
 package com.chase.pocketneurologist;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -26,6 +28,8 @@ public class HomeScreen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DonutProgress overallSeverityProgress;
+    private AlertDialog.Builder dialogBuilder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,6 +180,27 @@ public class HomeScreen extends AppCompatActivity
         }
         else
             overallSeverityProgress.setVisibility(View.INVISIBLE);
+    }
+
+    public void startSurvey() {
+        dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.create();
+        dialogBuilder.setTitle("Are you a new user?");
+        dialogBuilder.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        Intent intent = new Intent(getApplicationContext(), Survey.class);
+                        startActivity(intent);
+                    }
+                });
+        dialogBuilder.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        dialogBuilder.show();
     }
 
 

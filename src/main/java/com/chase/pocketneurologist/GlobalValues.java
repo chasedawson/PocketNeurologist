@@ -1,6 +1,7 @@
 package com.chase.pocketneurologist;
 
 import android.util.Log;
+import java.util.UUID;
 
 /**
  * Created by Chase Dawson on 6/27/2017.
@@ -34,6 +35,12 @@ public class GlobalValues {
 
     public static void setTestID(String str) {
         testID = str;
+    }
+
+    public static void generateNewUserId() {
+        String userId = UUID.randomUUID().toString();
+        setUserId(userId);
+
     }
 
 

@@ -191,6 +191,7 @@ public class HomeScreen extends AppCompatActivity
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                         Intent intent = new Intent(getApplicationContext(), Survey.class);
+                        GlobalValues.generateNewUserId();
                         startActivity(intent);
                     }
                 });

@@ -53,15 +53,14 @@ public class Settings extends AppCompatActivity {
         Toast.makeText(Settings.this, "" + GlobalValues.getTestMode(), Toast.LENGTH_LONG);
     }
 
-    public void generateNewUserId(View v) {
-        String userId = UUID.randomUUID().toString();
-        GlobalValues.setUserId(userId);
-        Log.i("USER ID", userId);
+    public static void generateNewUserId(View v) {
+        GlobalValues.generateNewUserId();
     }
 
     public void exportResults(View v) {
         DatabaseHandler db = new DatabaseHandler(this);
         db.exportDatabase("rawDataTestResults", "raw_data_test_results.csv");
         db.exportDatabase("testResults", "test_results.csv");
+        db.exportDatabase("personalInfo", "personalInfo.csv");
     }
 }

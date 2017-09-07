@@ -156,8 +156,12 @@ public class Test extends AppCompatActivity implements Testable, Timeable {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
+
                         Intent intent = new Intent(getApplicationContext(), HomeScreen.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
+
+
                     }
                 });
         dialogBuilder.show();

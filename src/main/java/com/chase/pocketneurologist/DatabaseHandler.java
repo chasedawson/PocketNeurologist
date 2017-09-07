@@ -107,7 +107,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY," + KEY_SYMPTOM +" TEXT," + KEY_DATE + " TEXT," + KEY_SEVERITY + " TEXT)";
 
 
-        String CREATE_PERSONAL_INFO_TABLE = "CREATE TABLE " + TABLE_PERSONAL_INFO + " ("
+        String CREATE_PERSONAL_INFO_TABLE = "CREATE TABLE " + TABLE_PERSONAL_INFO + " (" + KEY_USER_ID + " TEXT,"
                 + KEY_AGE_RANGE + " TEXT," + KEY_SEX + " TEXT," + KEY_BRADYKINESIA + " TEXT," + KEY_POSTURAL_INSTABILITY
                 + " TEXT," + KEY_RIGIDITY + " TEXT," + KEY_TREMOR + " TEXT," + KEY_LEVODOPA + " TEXT)";
 
@@ -143,6 +143,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         //inserts the values of the testResult into testResults
         db.insert(TABLE_TEST_RESULTS, null, values);
+        db.close();
+
+    }
+
+    public void addPersonalInfo(String[] personalInfo) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(KEY_USER_ID, GlobalValues.getUserID());
+        values.put(KEY_AGE_RANGE, personalInfo[0]);
+        values.put(KEY_SEX, personalInfo[1]);
+        values.put(KEY_BRADYKINESIA, personalInfo[2]);
+        values.put(KEY_POSTURAL_INSTABILITY, personalInfo[3]);
+        values.put(KEY_RIGIDITY, personalInfo[4]);
+        values.put(KEY_TREMOR, personalInfo[5]);
+        values.put(KEY_LEVODOPA, personalInfo[6]);
+
+        db.insert(TABLE_PERSONAL_INFO, null, values);
         db.close();
 
     }
@@ -343,14 +361,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             if (sqlDB.isOpen())
                 sqlDB.close();
             e.printStackTrace();
-
-
         }
         Log.i("SUCCESS", "DATABASE EXPORTED");
-
-
-
-
     }
+
 
 }

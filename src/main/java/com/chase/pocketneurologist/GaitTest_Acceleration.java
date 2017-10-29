@@ -25,7 +25,7 @@ public class GaitTest_Acceleration extends Test {
          * the type of data recorded by the test, and the unit for the type of data.
          */
         super.setTestTime(10000);
-        super.setTestType("Gait (Acceleration)");
+        super.setTestType("Gait");
         super.setDialogMessage("Your acceleration vector: ");
         super.setMeasure("acceleration");
         super.setUnit("m/s/s");

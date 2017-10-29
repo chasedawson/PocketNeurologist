@@ -72,10 +72,6 @@
             <action android:name="com.chase.pocketneurologist.RigidityTestResults" />
             <category android:name="android.intent.category.DEFAULT" />
         </activity>
-        <activity android:name=".BloodPressureTest" >
-            <action android:name="com.chase.pocketneurologist.BloodPressureTest" />
-            <category android:name="android.intent.category.DEFAULT" />
-        </activity>
 
         <activity android:name=".GaitTest_GaitLength"
             android:screenOrientation="portrait" >

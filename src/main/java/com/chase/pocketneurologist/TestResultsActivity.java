@@ -94,6 +94,8 @@ public class TestResultsActivity extends AppCompatActivity implements Graphable 
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
                 TestResult clickedTestResult = testResults.get((int)dataPoint.getX() - 1);
+                Log.i("GOT HERE", "henlo");
+                Log.i("TEST RESULT!", clickedTestResult.toString());
                 displayMoreInfo(clickedTestResult);
             }
         });

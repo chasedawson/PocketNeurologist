@@ -8,7 +8,7 @@ import java.util.UUID;
  */
 
 public class GlobalValues {
-    private static boolean testMode = false;
+    private static boolean testMode = true;
     private static String userID = null;
     private static String testID = null;
 

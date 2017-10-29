@@ -45,7 +45,8 @@ public class HomeScreen extends AppCompatActivity
 
         overallSeverityProgress = (DonutProgress) content_home_screen.findViewById(R.id.donut_progress);
         checkTestMode();
-        startSurvey();
+        GlobalValues.setTestMode(false);
+        //startSurvey();
 
 
 

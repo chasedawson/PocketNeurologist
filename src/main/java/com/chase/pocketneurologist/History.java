@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 /**
  * Purpose: Displays a list of activities that display the test results. When an item is selected the respective test results screen appears.
@@ -14,7 +15,7 @@ import android.widget.ListView;
 public class History extends AppCompatActivity {
 
     ListView listView;
-    String[] tests = {"Gait (Gait Length)", "Gait (Acceleration)", "Tremor", "Rigidity", ""};
+    String[] tests = {"Gait Length", "Gait Acceleration", "Tremor", "Rigidity", ""};
 
     private Intent intent;
 
@@ -22,6 +23,12 @@ public class History extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+
+        if (GlobalValues.getTestMode()) {
+            this.finish();
+            Toast.makeText(this,"Test history is not available when testing!", Toast.LENGTH_LONG).show();
+
+        }
 
         listView = (ListView) findViewById(android.R.id.list);
 
@@ -32,9 +39,9 @@ public class History extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(tests[position].equals("Gait (Gait Length)"))
+                if(tests[position].equals("Gait Length"))
                     intent = new Intent(History.this, GaitTest_GaitLengthResults.class);
-                else if(tests[position].equals("Gait (Acceleration)"))
+                else if(tests[position].equals("Gait Acceleration"))
                     intent = new Intent(History.this, GaitTest_AccelerationResults.class);
                 else if (tests[position].equals("Tremor"))
                     intent = new Intent(History.this, TremorTestResults.class);

@@ -22,10 +22,10 @@ public class TestList extends AppCompatActivity {
     ArrayList<Map<String, String>> data = new ArrayList<>();
 
     //list of available tests
-    String[] tests = {"Gait", "Tremor", "Rigidity", ""};
+    String[] tests = {"Gait Length", "Gait Acceleration", "Tremor", "Rigidity", ""};
 
     //descriptions of each test
-    String[] description = {"Measures acceleration while walking.", "Detects resting tremors in the hand.", "Detects rigidity in arms while walking.", ""};
+    String[] description = {"Uses pedometer and GPS to estimate gait length.", "Measures acceleration while walking.", "Measures tremor intensity in the hand.", "Measures rigidity intensity in arms while walking.", ""};
 
     private Intent intent;
 
@@ -53,7 +53,9 @@ public class TestList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 /*if(tests[position].equals("Gait (Gait Length)"))
                     intent = new Intent(TestList.this, GaitTest_GaitLength.class); */
-                if(tests[position].equals("Gait"))
+                if(tests[position].equals("Gait Length"))
+                    intent = new Intent(TestList.this, GaitTest_GaitLength.class);
+                else if (tests[position].equals("Gait Acceleration"))
                     intent = new Intent(TestList.this, GaitTest_Acceleration.class);
                 else if (tests[position].equals("Tremor"))
                     intent = new Intent(TestList.this, TremorTest.class);

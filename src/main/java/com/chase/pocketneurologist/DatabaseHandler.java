@@ -243,7 +243,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        String[] resultConstructor = {cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)};
+        String[] resultConstructor = {cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5)};
         TestResult testResult = new TestResult(resultConstructor);
         // return contact
         return testResult;
@@ -259,7 +259,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Log.i("SQL", cursor.getCount() + "");
         if(cursor.moveToFirst()) {
             do {
-                String[] resultConstructor = {cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4)};
+                String[] resultConstructor = {cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5)};
                 TestResult testResult = new TestResult(resultConstructor);
                 testResults.add(testResult);
             } while (cursor.moveToNext());
